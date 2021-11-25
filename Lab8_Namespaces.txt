@@ -1,0 +1,53 @@
+1. Ver los namespaces existentes:
+kubectl get ns
+2. Ver los pods de sistema, dentro de su ns correspondiente:
+kubectl get po --namespace kube-system
+3. Crear dos namespaces:
+kubectl create namespace primer-ns
+kubectl create namespace segundo-ns
+4. Crear pods en los dos ns:
+kubectl create deploy hello-node --image=diegochavezcarro/hellonodedocker:latest --port=8080 -n primer-ns
+kubectl create deploy hello-node2 --image=diegochavezcarro/hellonodedocker:latest --port=8080 -n primer-ns
+kubectl create deploy hello-node --image=diegochavezcarro/hellonodedocker:latest --port=8080 -n segundo-ns
+kubectl create deploy hello-node2 --image=diegochavezcarro/hellonodedocker:latest --port=8080 -n segundo-ns
+5. Listar esos pods, con sus IPs:
+kubectl get pods -o wide -n primer-ns
+kubectl get pods -o wide -n segundo-ns
+6. Tomar una consola hacia un pod del namespace primer-ns:
+kubectl exec -it hello-node-594bf69d8-gfq4h -n primer-ns -- sh
+7. Probar las apps internas a los pods con curl:
+Probar localmente:
+curl localhost:8080
+Probar el otro pod del mismo namespace:
+curl 172.17.0.8:8080
+Probar un pod de otro namespace:
+curl 172.17.0.6:8080
+Qué sucedió? Hay aislamiento?
+8. En otra terminal exponer un servicio a partir de un pod del primer namespace:
+kubectl expose deployment hello-node --type=NodePort -n primer-ns
+9. Ver la IP creada dentro del cluster:
+kubectl get services -o wide -n primer-ns
+10. En la terminal conectada al pod del primer namespace probar acceso al Service:
+curl 10.106.139.96:8080
+Se puede ver?
+Crear otro Deployment en el primer-ns y ejecutar de vuelta.
+11. Salir con exit de esa terminal y acceder a un pod del segundo namespace:
+kubectl exec -it hello-node-594bf69d8-gfq4h -n segundo-ns -- sh
+12. Acceder al Service del primer namespace (desde el segundo):
+curl 10.106.139.96:8080
+Hay aislamiento?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

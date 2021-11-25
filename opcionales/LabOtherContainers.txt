@@ -1,0 +1,32 @@
+RKT:
+Usa Pods de forma nativa. Las imágenes vienen firmadas. Corre los containers de forma directa, sin un cliente-servidor con un daemon.
+Puede correr imágenes formateadas para Docker.
+1. Levantar minikue utilizando RKT como container runtime:
+minikube start --vm-driver=hyperv --hyperv-virtual-switch="myswitch" --memory=4096 --container-runtime=rkt --network-plugin=cni
+Si utilizamos Virtual Box:
+minikube start --memory=4096 --container-runtime=rkt --network-plugin=cni
+2. Crear un deployment:
+kubectl run hello-node --image=diegochavezcarro/hellonodedocker:latest --port=8080
+3. Ver que los containers e imágenes mostrados son del tipo rkt y no docker:
+kubectl describe pods
+4. Entrar al nodo:
+minikube ssh
+5. Ver los contenedores de rkt:
+rkt list
+6. Ver las imagenes:
+rkt image list
+7. Para continuar con otros ejercicios:
+minikube stop
+minikube delete
+Por las dudas borrar el directorio .minikube en la home del usuario.
+
+CRIO-O:
+Implementación de Kubernetes de la Container Runtime Interface. Basado en Open Container Initiative.
+1. Levantar minikube utilizando CRI-O como container runtime:
+minikube start --vm-driver=hyperv --hyperv-virtual-switch="myswitch" --memory=4096 --network-plugin=cni --container-runtime=cri-o --bootstrapper=kubeadm
+2. Ver containers levantados:
+runc list
+3. Para continuar con otros ejercicios:
+minikube stop
+minikube delete
+Por las dudas borrar el directorio .minikube en la home del usuario.

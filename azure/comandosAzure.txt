@@ -1,0 +1,24 @@
+
+
+Una vez instalado el cliente de Azure:
+1. Loguearse hacia la nube, si estaba abierta la consola web hará single sign on
+con el browser:
+az login
+2. Vincular el kubectl con el cluster en la nube:
+az aks get-credentials --resource-group cursoaz203-1 --name primerclusterk
+3. Ver si se conecto bien:
+kubetl version
+4. Ver los worker nodes:
+kubectl get nodes
+5. Desplegar la aplicación:
+kubectl apply -f azure-vote.yaml
+kubectl get service azure-vote-front
+kubectl get deploy
+6. Probar Autoescalamiento:
+kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=2 --max=10
+kubectl get deploy
+kubectl get hpa
+7. Para ver el dashboard de kubernetes:
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+az aks browse --resource-group cursoaz203-1 --name primerclusterk
+

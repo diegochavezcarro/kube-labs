@@ -1,0 +1,84 @@
+Solo funciona con Docker for Windows o Docker for Mac en versión Edge.
+Sacar del PATH al minikube y kubectl que se están usando.
+Bajarse en la home del usuario (con git o "download zip"):
+git clone https://github.com/dockersamples/k8s-wordsmith-demo
+Entrar en el directorio creado.
+1. Levantar Docker for Windows.
+2. Una vez levantado ir a Settings->Enable Kubernetes->Elegir Kubernetes como orquestador por defecto.
+3. Botón derecho sobre la ballenita, elegir Kubernetes->Context y elegir docker-for-desktop en vez de minikube.
+También si es posible cambiar el Setting la memoria RAM por 4GB.
+4. Ver la versión de docker, viendo si se ve el orquestador y si dice Kubernetes en vez de swarm. 
+docker version
+5. Ver el contexto actual:
+kubectl config current-context
+6. Ver la configuración actual:
+kubectl config view
+kubectl cluster-info
+kubectl get nodes
+7. Ver si hay algo instalado:
+docker container ls
+kubectl get pods
+8. Desplegar el stack:
+docker stack deploy -c docker-compose.yml words1
+9. Ver si el stack está levantado:
+docker stack ls
+docker stack services words1
+10. Ejecutar:
+docker service ls
+Qué pasó? Está en modo kubernetes o modo swarm?
+11. Ver los pods, servicios y deployments levantados:
+kubectl get pods
+kubectl get svc
+kubectl get deployments
+12. Ver qué config de deploy se hizo:
+kubectl get deployments -o json
+13. Ver los containers levantados:
+docker container ls
+14. Ver la aplicación levantada:
+http://localhost:8080/
+15. Borrar el stack:
+docker stack rm words1
+16. Desplegar la app usando kubectl:
+kubectl apply -f kube-deployment.yml
+17. Ver los pods, servicios, deployments.
+18. Ver la app levantada:
+http://localhost:8081/
+19. Ejecutar:
+docker stack ls
+docker service ls
+Se ve algo?
+20. Ver contenedores:
+docker container ls
+21. Ahora levantar con docker swarm, sin parar la parte kubernetes. Crear el swarm:
+docker swarm init
+22. Cambiar el orquestador por Docker Swarm en settings del Docker for Windows y ver si se realizo el cambio:
+docker version
+23. Desplegar la app:
+docker stack deploy -c docker-compose.yml words3
+24. Ver si ambas apps están levantadas:
+http://localhost:8080
+http://localhost:8081
+25. Ejecutar:
+docker stack ls
+docker service ls
+Que paso?
+26. Ver todos los contenedores levantados:
+docker container ls
+27. Limpiar:
+docker stack rm words3
+
+kubectl delete deployment web
+kubectl delete deployment word
+kubectl delete deployment db
+kubectl delete service db
+kubectl delete service words
+kubectl delete service web
+
+
+
+
+
+
+
+
+

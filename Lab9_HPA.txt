@@ -1,0 +1,55 @@
+1. Ver si se ven métricas: 
+kubectl top nodes
+Va a dar un error si no es así.
+2. Desplegar el metrics-server:
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.7/components.yaml
+3. Actualizar para que no valide los certificados:
+kubectl edit deploy -n kube-system metrics-server
+
+Editar (es un "vi", editar con "i", guardar con "wq") para que quede de esta manera en los args del metrics-server (agregar los últimos 2):
+
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s-app: metrics-server
+      name: metrics-server
+    spec:
+      containers:
+      - args:
+        - --cert-dir=/tmp
+        - --secure-port=4443
+        - --kubelet-insecure-tls
+        - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+        image: k8s.gcr.io/metrics-server/metrics-server:v0.3.7
+
+4. Después de pocos minutos deberían verse las métricas. También se verán en el dashboard:
+kubectl top nodes
+
+5. Bajarse el código de https://github.com/dch-microdemo/product-service
+
+6. Desplegar el Deployment/Service y el HPA:
+kubectl create -f product-app-k8s-template.yaml
+kubectl create -f product-hpa.yaml
+
+7. Ver si se desplegó la aplicación (reemplazar minikube-ip con lo q muestra el comando "minikube ip"):
+http://minikube-ip:30001/products/
+Devolverá un vector vacío "[]"
+
+8. Observar al HPA y al Deployment. A los pocos minutos de no realizar consumos se bajará de 2 pods a 1.
+kubectl get hpa
+kubectl del deploy
+
+9. Generar carga. Ir viendo los dos comandos anteriores en otro tab (hpa y deploy).
+
+kubectl run -it --rm --restart=Never loadgenerator --image=busybox -- sh -c "while true; do wget -O - -q http://product-service:8082/products/; done"
+
+A los pocos minutos se verán 3 o 4 pods.
+
+10. Parar con ctrl+c ese generador, y a los pocos minutos se volverá a 1 pod.
+
+
+
+
+
+

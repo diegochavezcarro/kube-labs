@@ -1,0 +1,4 @@
+1. Realizar ejercicios Kubernetes Declarative e Imperative.
+2. Carpeta python-redis
+3. Continuar con Volumes, etc.
+4. Opcional: carpeta opcionales, otros Container Runtimes

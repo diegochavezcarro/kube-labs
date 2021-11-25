@@ -1,0 +1,16 @@
+1. Crear un ConfigMap con un literal:
+kubectl create configmap special-config --from-literal=special.how=very
+2. Ver lo que se creo:
+kubectl get configmaps
+kubectl describe configmaps special-config
+kubectl get configmaps special-config -o yaml
+3. Crear un pod que utilice al confimap como una variable de entorno:
+kubectl create -f pod-single-configmap-env-variable.yaml
+4. Ver los logs que genero:
+kubectl logs dapi-test-pod
+5. Crear otro configmap:
+kubectl create -f configmap-multikeys.yaml
+6. Crear un pod que lo utilice como volumen:
+kubectl create -f pod-configmap-volume.yaml
+7. Ver los logs:
+kubectl logs dapi-test-pod2
