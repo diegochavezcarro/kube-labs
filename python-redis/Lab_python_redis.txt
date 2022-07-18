@@ -1,5 +1,5 @@
 1. Posicionarse en la carpeta donde estan los archivos descriptivos, por ej:
-cd C:\diego\cursos\mug\itau\docker2018\docker-itau2019\kube_labs\python-redis 
+cd C:\diego\cursos\kube-labs\python-redis 
 Levantar minikube: 
 minikube start
 
@@ -8,28 +8,30 @@ minikube dashboard
 3. Opcional: En otra terminal podemos conectarnos al server (a la virtual que contiene tanto al master como a los nodos):
 minikube ssh
 4. Crear un deployment para la base redis:
-kubectl create -f deploy-redis.yml
+kubectl apply -f deploy-redis.yml
 5. Ver los pods que se crearon:
 kubectl get pods -o wide
 6. Levantar un servicio para exponer ese deployment,usando el archivo descriptivo:
-kubectl create -f svc-redis.yml
+kubectl apply -f svc-redis.yml
 7. Ver los servicios levantados:
 kubectl get services
 Observar que solo se expone internamente al cluster.
 
 8. Crear un deployment para la app python:
-kubectl create -f deploy-python.yml
+kubectl apply -f deploy-python.yml
 9. Ver los pods que se crearon:
 kubectl get pods -o wide
-10. Levantar un servicio para exponer ese deployment,usando el archivo descriptivo:
-kubectl create -f svc-python.yml
+10. Levantar un servicio para exponer ese deployment,usando el archivo descriptivo, ya que se usa el tipo LoadBalancer, levantar un tunel en otro tab:
+minikube tunnel
+Luego crear el Service:
+kubectl apply -f svc-python.yml
 11. Ver los servicios levantados:
 kubectl get services
-En el comando anterior buscar el nodePort
 12. En la PC cliente ir a un browser e ir a:
-http://192.168.99.100:30001/
-Reemplazar por la IP asignada al minikube ("minikube ip") y por el puerto obtenido en el anterior punto.
-En algunos casos la IP mapeara a localhost.
+http://localhost
+Si no anduvo probar:
+minikube service svc-python
+Se vera en el Browser la app, o sino ver la URL y levantarla en el browser.
 
 
 
