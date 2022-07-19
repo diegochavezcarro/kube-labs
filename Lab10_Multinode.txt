@@ -1,0 +1,1 @@
+1. Primero ir al directorio correspondiente al ej https://github.com/diegochavezcarro/kube-labs/tree/main/python-redis
