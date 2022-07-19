@@ -2,6 +2,7 @@
 2. Crear un nuevo minikube (borrar el anterior o crear otro perfil) con 3 nodos:
 minikube start --nodes 3
 3. Ver el estado del cluster y levantar el dashboard:
+kubectl get nodes
 minikube status
 minikube dashboard (en otro Tab)
 4. Desplegar la app:
