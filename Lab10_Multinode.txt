@@ -1,1 +1,4 @@
 1. Primero ir al directorio correspondiente al ej https://github.com/diegochavezcarro/kube-labs/tree/main/python-redis
+2. Crear un nuevo minikube (borrar el anterior o crear otro perfil) con 3 nodos:
+minikube start --nodes 3
+3. 
