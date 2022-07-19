@@ -15,6 +15,11 @@ kubectl get pods -o wide
 6. Borrar un pod y ver que sucede:
 kubectl delete pods python-deploy-55544dd6c7-6vzw8
 kubectl get pods -o wide
-7. Borrar uno de los nodos y ver que sucede:
+7. Para ver mas replicas distribuidas modificar el archivo
+https://github.com/diegochavezcarro/kube-labs/blob/main/python-redis/deploy-python.yml
+para que tenga 6 replicas, luego desplegarlo y ver que sucede:
+kubectl apply -f .\deploy-python.yml
+kubectl get pods -o wide
+8. Borrar uno de los nodos y ver que sucede:
 minikube node delete m02
 kubectl get pods -o wide
