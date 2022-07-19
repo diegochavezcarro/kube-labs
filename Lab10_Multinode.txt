@@ -1,4 +1,20 @@
 1. Primero ir al directorio correspondiente al ej https://github.com/diegochavezcarro/kube-labs/tree/main/python-redis
 2. Crear un nuevo minikube (borrar el anterior o crear otro perfil) con 3 nodos:
 minikube start --nodes 3
-3. 
+3. Ver el estado del cluster y levantar el dashboard:
+minikube status
+minikube dashboard (en otro Tab)
+4. Desplegar la app:
+kubectl apply -f .\deploy-redis.yml
+kubectl apply -f .\svc-redis.yml
+kubectl apply -f .\deploy-python.yml
+minikube tunnel (En otro tab)
+kubectl apply -f .\svc-python.yml
+5. Observar como se distribuyeron los pods:
+kubectl get pods -o wide
+6. Borrar un pod y ver que sucede:
+kubectl delete pods python-deploy-55544dd6c7-6vzw8
+kubectl get pods -o wide
+7. Borrar uno de los nodos y ver que sucede:
+minikube node delete m02
+kubectl get pods -o wide
