@@ -30,7 +30,7 @@ kubectl get services
 12. En la PC cliente ir a un browser e ir a:
 http://localhost
 Si no anduvo probar:
-minikube service svc-python
+minikube service python-svc
 Se vera en el Browser la app, o sino ver la URL y levantarla en el browser.
 
 
