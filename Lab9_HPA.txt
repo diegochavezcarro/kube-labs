@@ -16,12 +16,12 @@ kubectl create -f product-hpa.yaml
 7. Ver si se despleg— la aplicaci—n (reemplazar minikube-ip con lo q muestra el comando "minikube ip"):
 http://minikube-ip:30001/products/
 Si no anda ejecutar
-minikube service python-svc
+minikube service product-service
 Devolvera un vector vacio "[]" en el browser, es un microservicio que aun no tiene datos.
 
 8. Observar al HPA y al Deployment. A los pocos minutos de no realizar consumos se bajara de 2 pods a 1.
 kubectl get hpa
-kubectl del deploy
+kubectl get deploy
 
 9. Generar carga. Ir viendo los dos comandos anteriores en otro tab (hpa y deploy).
 
