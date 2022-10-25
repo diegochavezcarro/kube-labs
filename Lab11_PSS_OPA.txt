@@ -1,1 +1,63 @@
+Usando Pod Security Standards:
+https://kubernetes.io/docs/concepts/security/pod-security-standards/
 
+1. Crear un namespace con Restricted Policy:
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/main/content/en/examples/security/podsecurity-restricted.yaml
+
+2. Probar que sucede con un Pod que tiene permitido elevar privilegios:
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/allow-privilege-escalation/samples/psp-allow-privilege-escalation-container/example_disallowed.yaml -n my-restricted-namespace
+
+3. Crear un namespace con Baseline Policy:
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/main/content/en/examples/security/podsecurity-baseline.yaml
+
+4. Probar el mismo Pod:
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/allow-privilege-escalation/samples/psp-allow-privilege-escalation-container/example_disallowed.yaml -n my-baseline-namespace
+
+5. Ver si se creo bien el Pod: 
+
+kubectl get pods -n my-baseline-namespace
+
+
+Usando OPA Gatekeeper:
+
+1. Instalar los componentes del Gatekeeper en el Minikube:
+
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
+
+2. Ver lo generado en otro tab:
+
+minikube dashboard
+Ver en el browser la URL q aparece en el final si no es que la misma terminal levanta el browser.
+Observar los CustomResourceDefinitions en el dashboard. Tambien se puede verlos en la terminal:
+kubectl get customresourcedefinitions
+O en su forma resumida:
+kubectl get crd
+
+3. Instalar un CRD para controlar el escalado de privilegios:
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/allow-privilege-escalation/template.yaml
+Observar el nuevo CRD creado:
+kubectl get crd
+
+4. Crear un Constraint:
+
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/allow-privilege-escalation/samples/psp-allow-privilege-escalation-container/constraint.yaml
+
+5. Probar si es posible crear un Pod que pueda escalar privilegios:
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/allow-privilege-escalation/samples/psp-allow-privilege-escalation-container/example_disallowed.yaml
+
+6. Crear un CRD para Registros de Imagenes permitidos:
+
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/general/allowedrepos/template.yaml
+
+7. Crear una Constraint para el mismo:
+
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/general/allowedrepos/samples/repo-must-be-openpolicyagent/constraint.yaml
+
+8. Probar un Pod que use tal repo:
+
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/general/allowedrepos/samples/repo-must-be-openpolicyagent/example_allowed.yaml
+Puede aparecer una politica de escalamiento de privilegios.
+
+9. Probar un Pod que no use tal repo:
+
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/general/allowedrepos/samples/repo-must-be-openpolicyagent/example_disallowed_container.yaml
