@@ -22,4 +22,17 @@ Afuera de ese pod:
 
 curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:8443/api/v1
 
+curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:8443/api/v1/namespaces/pods
+
+curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:8443/healthz
+
+kubectl get secrets 
+kubectl describe secret defaultsec
+
+agregarle /version a la de etcd
+
+a la del kubelet /metrics y /pods
+
+agregarle al kube-hunter --active
+
 
