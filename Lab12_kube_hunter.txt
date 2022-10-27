@@ -10,9 +10,9 @@ Elegir 1 y poner la minikube ip o elegir el punto 2
 
 curl -k https://192.168.49.2:8443/api/v1
 
-kubectl apply -fhttps://raw.githubusercontent.com/diegochavezcarro/kube-labs/main/deploy.yml
+kubectl apply -f https://raw.githubusercontent.com/diegochavezcarro/kube-labs/main/deploy.yml
 kubectl get pods
-https://raw.githubusercontent.com/diegochavezcarro/kube-labs/main/svc.yml
+kubectl apply -f https://raw.githubusercontent.com/diegochavezcarro/kube-labs/main/svc.yml
 kubectl get svc
 Probar en un browser, obteniendo la minikube ip:
 http://192.168.49.2:30001/
