@@ -10,7 +10,7 @@ minikube dashboard
 kubectl create deploy hello-node --image=diegochavezcarro/hellonodedocker:v1 --port=8080
 6. Esperar hasta que este lista (ready) la app:
 kubectl get pods
-7. Ver m·s detalles del pod creado
+7. Ver m√°s detalles del pod creado
 Usando el nombre del pod generado:
 kubectl get pods -o json hello-node-ccdbcf554-nfbvr
 kubectl describe pods hello-node-ccdbcf554-nfbvr
@@ -26,11 +26,11 @@ kubectl exec -it hello-node-ccdbcf554-nfbvr sh
 dentro de esa terminal:
 curl localhost:8080
 curl 172.17.0.4:8080
-Reemplazar esa IP por la del Pod que aparece en los comandos descriptivos de m·s arriba.
+Reemplazar esa IP por la del Pod que aparece en los comandos descriptivos de m√°s arriba.
 Dar exit
 10. En la otra terminal, la cual estaba conectada al Minikube, ejecutar:
 curl 172.17.0.4:8080
-Reemplazar esa IP por la del Pod que aparece en los comandos descriptivos de m·s arriba.
+Reemplazar esa IP por la del Pod que aparece en los comandos descriptivos de m√°s arriba.
 11. Volviendo a la terminal original:
 Ver los deployments:
 kubectl get deployments
