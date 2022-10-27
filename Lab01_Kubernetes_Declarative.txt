@@ -20,7 +20,7 @@ Verla de forma grafica, en otra ventana dejar levantado el dashboard (se levanta
 minikube dashboard
 3. En otra ventana podemos conectarnos al server (a la virtual que contiene tanto al master como a los nodos):
 minikube ssh
-Ver qué hay adentro:
+Ver quÃ© hay adentro:
 pwd
 ls
 ps aux
@@ -47,7 +47,7 @@ kubectl get rs -o json
 kubectl get deployments
 kubectl get deployments -o json
 kubectl describe deploy hello-deploy
-11.Ver más detalles del pod creado
+11.Ver mÃ¡s detalles del pod creado
 Usando el nombre del pod generado:
 kubectl get pods -o json hello-deploy-ccdbcf554-nfbvr
 kubectl describe pods hello-deploy-ccdbcf554-nfbvr
@@ -56,7 +56,7 @@ docker container ls
 13. En la terminal original ver dentro del pod: 
 kubectl exec hello-deploy-ccdbcf554-nfbvr ps aux
 kubectl exec -it hello-deploy-ccdbcf554-nfbvr -- sh
-dentro de esta última terminal:
+dentro de esta Ãºltima terminal:
 curl localhost:8080
 Repaso de Docker: Ejecutar:
 ps aux
@@ -64,7 +64,7 @@ Anotar el Process ID del comando "npm start"
 Dar exit
 14. En la otra terminal, la cual estaba conectada al Minikube, ejecutar:
 curl 172.17.0.4:8080
-Reemplazar esa IP por la que aparece en los comandos descriptivos de más arriba
+Reemplazar esa IP por la que aparece en los comandos descriptivos de mÃ¡s arriba
 (por ej kubectl get pods -o wide).
 Repaso de Docker: Ejecutar:
 ps aux
