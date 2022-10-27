@@ -14,6 +14,8 @@ kubectl apply -fhttps://raw.githubusercontent.com/diegochavezcarro/kube-labs/mai
 kubectl get pods
 https://raw.githubusercontent.com/diegochavezcarro/kube-labs/main/svc.yml
 kubectl get svc
+Probar en un browser, obteniendo la minikube ip:
+http://192.168.49.2:30001/
 
 kubectl exec -it hello-deploy-57844dd6f7-4mnsm -- sh
 
