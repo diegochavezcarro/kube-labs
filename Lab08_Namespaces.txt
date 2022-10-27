@@ -22,7 +22,7 @@ Probar el otro pod del mismo namespace:
 curl 172.17.0.8:8080
 Probar un pod de otro namespace:
 curl 172.17.0.6:8080
-Qué sucedió? Hay aislamiento?
+QuÃ© sucediÃ³? Hay aislamiento?
 8. En otra terminal exponer un servicio a partir de un pod del primer namespace:
 kubectl expose deployment hello-node --type=NodePort -n primer-ns
 9. Ver la IP creada dentro del cluster:
