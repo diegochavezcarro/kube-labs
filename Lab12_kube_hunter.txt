@@ -4,6 +4,8 @@ minikube start
 
 docker run -it --rm --network host aquasec/kube-hunter
 
+https://github.com/aquasecurity/kube-hunter
+
 Elegir 1 y poner la minikube ip o elegir el punto 2
 
 curl -k https://192.168.49.2:8443/api/v1
