@@ -35,6 +35,8 @@ curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:8443/healthz
 
 kubectl get secrets 
 kubectl describe secret defaultsec
+Con un kube mas viejo es posible:
+minikube start --kubernetes-version=v1.19.2
 
 agregarle /version a la de etcd
 
