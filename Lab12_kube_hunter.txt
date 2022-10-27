@@ -12,6 +12,9 @@ curl -k https://192.168.49.2:8443/api/v1
 
 kubectl apply -fhttps://raw.githubusercontent.com/diegochavezcarro/kube-labs/main/deploy.yml
 kubectl get pods
+https://raw.githubusercontent.com/diegochavezcarro/kube-labs/main/svc.yml
+kubectl get svc
+
 kubectl exec -it hello-deploy-57844dd6f7-4mnsm -- sh
 
 cat /var/run/secrets/kubernetes.io/serviceaccount/token
