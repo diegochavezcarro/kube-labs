@@ -23,13 +23,13 @@ cat /var/run/secrets/kubernetes.io/serviceaccount/token
 
 export TOKEN=`cat /var/run/secrets/kubernetes.io/serviceaccount/token`
 
-curl -k -H "Authorization: Bearer $TOKEN"  https://kubernetes
+curl -k -H "Authorization: Bearer $TOKEN"  https://kubernetes/api/v1
 
 Afuera de ese pod:
 
 curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:8443/api/v1
 
-curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:8443/api/v1/namespaces/pods
+curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:8443/api/v1/namespaces/default/pods
 
 curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:8443/healthz
 
