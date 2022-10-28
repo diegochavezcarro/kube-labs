@@ -24,6 +24,10 @@ Usando OPA Gatekeeper:
 
 kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
 
+Podemos ver politicas de ejemplo:
+
+https://github.com/open-policy-agent/gatekeeper-library
+
 2. Ver lo generado en otro tab:
 
 minikube dashboard
