@@ -38,10 +38,15 @@ kubectl describe secret defaultsec
 Con un kube mas viejo es posible:
 minikube start --kubernetes-version=v1.19.2
 
-agregarle /version a la de etcd
+Probar acceso a etcd:
+curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:2379/version/
 
-a la del kubelet /metrics y /pods
+Probar acceso al del kubelet /metrics y /pods
+curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:10250/metrics
+curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:10250/pods
 
-agregarle al kube-hunter --active
+
+
+Para tests activos agregarle al kube-hunter --active
 
 
