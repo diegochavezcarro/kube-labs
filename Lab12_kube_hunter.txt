@@ -45,6 +45,36 @@ Probar acceso al del kubelet /metrics y /pods
 curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:10250/metrics
 curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:10250/pods
 
+Para mas contexto probemos crear un Service Account con permisos de cluster admin, y un secret con un token:
+kubectl create serviceaccount admin-user
+
+kubectl create clusterrolebinding admin-user-binding \
+  --clusterrole cluster-admin \
+  --serviceaccount default:admin-user
+  
+cat <<EOF | kubectl create -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: admin-user-token
+  annotations:
+    kubernetes.io/service-account.name: admin-user
+type: kubernetes.io/service-account-token
+EOF
+
+kubectl get secrets
+kubectl describe secrets admin-user-token
+Copiar el token y usarlo:
+
+curl -k -H "Authorization: Bearer $TOKEN" https://192.168.49.2:8443/api/v1/namespaces/default/pods
+curl -k -H "Authorization: Bearer $TOKEN" https://192.168.49.2:8443/api/v1/namespaces/default/secrets
+
+curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:2379/version/
+
+curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:10250/metrics
+curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:10250/pods
+
+
 
 
 Para tests activos agregarle al kube-hunter --active
