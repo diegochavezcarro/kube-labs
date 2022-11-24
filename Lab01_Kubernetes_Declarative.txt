@@ -43,7 +43,7 @@ kubectl describe pods hello-deploy-ccdbcf554-nfbvr
 12. En la terminal conectada al Minikube SSH ver los contenedores que se crearon:
 docker container ls
 13. En la terminal original ver dentro del pod: 
-kubectl exec hello-deploy-ccdbcf554-nfbvr ps aux
+kubectl exec hello-deploy-ccdbcf554-nfbvr -- ps aux
 kubectl exec -it hello-deploy-ccdbcf554-nfbvr -- sh
 dentro de esta última terminal:
 curl localhost:8080
@@ -59,7 +59,7 @@ Reemplazar esa IP por la que aparece en los comandos descriptivos de más arriba
 (por ej kubectl get pods -o wide).
 
 15. Levantar un servicio para exponer el deployment,usando el archivo descriptivo:
-kubectl create -f svc.yml
+kubectl app -f svc.yml
 16. Ver los servicios levantados y el detalle:
 kubectl get services
 kubectl get services -o json hello-svc
@@ -72,7 +72,7 @@ minikube service hello-svc
 En Powershell levantara un browser, en WSL2 va a mostrar la URL en la terminal, copiarla y pegarla en el browser.
 18. En la terminal conectada al Minikube ejecutar:
 curl 10.97.50.72:8080
-Reemplazar por la IP del cluster ip obtenido con el comando "kubectl get services". Tambien:
+Reemplazar por la IP del tipo ClusterIp obtenido con el comando "kubectl get services". Tambien:
 curl localhost:30001
 
 19. Ver los logs que fue levantando el pod:
@@ -81,6 +81,7 @@ kubectl logs hello-deploy-ccdbcf554-nfbvr
 20. Limpiar:
 kubectl delete service hello-svc
 kubectl delete deployment hello-deploy
+
 Si no se quiere continuar con mas laboratorios:
 minikube stop
 Si se quiere borrar el trabajo hecho:
