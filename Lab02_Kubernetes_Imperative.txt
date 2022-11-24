@@ -1,4 +1,4 @@
-1. Levantar minikube 
+1. Levantar minikube (si no esta levantado)
 minikube start
 2. Ver informacion del kubectl:
 kubectl version --output=yaml
@@ -21,8 +21,8 @@ Dentro de la terminal conectada al minikube:
 docker ps
 Volver a la otra terminal:
 9. Ver dentro del pod: 
-kubectl exec hello-node-ccdbcf554-nfbvr ps aux
-kubectl exec -it hello-node-ccdbcf554-nfbvr sh
+kubectl exec hello-node-ccdbcf554-nfbvr -- ps aux
+kubectl exec -it hello-node-ccdbcf554-nfbvr -- sh
 dentro de esa terminal:
 curl localhost:8080
 curl 172.17.0.4:8080
@@ -61,7 +61,7 @@ En otra terminal crear otro deployment:
 kubectl create deploy hello-node2 --image=diegochavezcarro/hellonodedocker:v1 --port=8080
 Ver el nombre asignado con kubectl get pods:
 Ingresar al mismo 
-kubectl exec -it hello-node2-764d674c79-5bxf2 sh
+kubectl exec -it hello-node2-764d674c79-5bxf2 -- sh
 Ejecutar:
 curl hello-node:8080
 curl 10.97.50.72:8080
