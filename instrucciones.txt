@@ -29,7 +29,7 @@ En ambos usar la opcion Homebrew.
 
 
 Una vez instalado en todos los casos ver si se instalo bien el cliente:
-kubectl version --client
+kubectl version --client --output=yaml
 
 Levantar el minikube:
 minikube start
