@@ -1,5 +1,5 @@
 1. Crear un volumen y un pod que contenga un MongoDB:
-kubectl create -f mongodb-pod-hostpath.yaml
+kubectl apply -f mongodb-pod-hostpath.yaml
 2.Conectarse al pod:
 kubectl exec -it mongodb -- mongo
 3. Crear una base e ingresar algo:
@@ -12,7 +12,7 @@ kubectl delete pod mongodb
 6. En una consola logueada al minikube ver si se conservaron datos:
 ls /tmp/mongodb/
 7. Volver a crear el pod:
-kubectl create -f mongodb-pod-hostpath.yaml
+kubectl apply -f mongodb-pod-hostpath.yaml
 8. Comprobar si los datos estan aun:
 kubectl exec -it mongodb -- mongo
 show dbs
