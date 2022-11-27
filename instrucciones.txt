@@ -1,19 +1,23 @@
 1. Instalacion:
 Como primer paso instalar Docker. Ver instrucciones en el paso 1 de:
 https://github.com/diegochavezcarro/docker-labs/blob/main/Instrucciones.txt
-Segundo, instalar Minikube, el cluster local de Kubernetes, tambien es conveniente utilizarlo desde un Linux o un Linux dentro de una Virtual.
+Segundo, instalar Minikube, el cluster local de Kubernetes, tambien es conveniente utilizarlo 
+desde un Linux o un Linux dentro de una Virtual.
 https://minikube.sigs.k8s.io/docs/start/
 Elegir el binary install
 Tercero instalar kubectl:
 https://kubernetes.io/es/docs/tasks/tools/included/install-kubectl-linux/
 Instalar usando la administración nativa de paquetes. Tmb es posible la forma binaria.
 
-El el caso Windows con WSL2 en la terminal de Linux se pueden seguir los mismos pasos. Tener en cuenta que algunos pasos de los ejercicios se tendran que ejecutar de forma diferente (vamos a ver despues el detalle)
+El el caso Windows con WSL2 en la terminal de Linux se pueden seguir los mismos pasos. Tener en 
+cuenta que algunos pasos de los ejercicios se tendran que ejecutar de forma diferente (vamos a ver 
+despues el detalle)
 
 El el caso Windows con Powershell:
 Minikube:
 https://storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe
-Renombrarlo a minikube.exe y ponerlo en el PATH del sistema operativo (buscar system environment variables y agregar el path al exe)
+Renombrarlo a minikube.exe y ponerlo en el PATH del sistema operativo (buscar system environment 
+variables y agregar el path al exe)
 Kubectl: 
 Buscar cual es el ultimo estable:
 https://storage.googleapis.com/kubernetes-release/release/stable.txt
@@ -33,7 +37,9 @@ kubectl version --client --output=yaml
 
 Levantar el minikube:
 minikube start
-Por defecto si se tiene el Docker levantado Linux, Windows, Windows WSL2 usaran al mismo como virtualizacion para levantar el cluster local. macOS usara un virtualizador a nivel software, liviano, llamado Hyperkit.
+Por defecto si se tiene el Docker levantado Linux, Windows, Windows WSL2 usaran al mismo 
+como virtualizacion para levantar el cluster local. macOS usara un virtualizador a nivel 
+software, liviano, llamado Hyperkit.
 Una vez levantado el cluster, ejecutar:
 minikube status
 Tambien, para mas detalles:
