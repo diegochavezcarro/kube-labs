@@ -13,7 +13,7 @@ kubectl top nodes
 kubectl create -f product-app-k8s-template.yaml
 kubectl create -f product-hpa.yaml
 
-7. Ver si se despleg— la aplicaci—n (reemplazar minikube-ip con lo q muestra el comando "minikube ip"):
+7. Ver si se despleg— la aplicacion (reemplazar minikube-ip con lo q muestra el comando "minikube ip"):
 http://minikube-ip:30001/products/
 Si no anda ejecutar
 minikube service product-service
