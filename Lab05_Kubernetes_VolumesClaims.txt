@@ -14,7 +14,7 @@ kubectl get pvc
 Observar como se acoplaron.
 Si se crea otro pvc (cambiar el nombre) veremos que no se acopla al otro pv:
 
-PS C:\diego\cursos\mug\itau\docker2018\container_orch_labs> kubectl get pvc
+kubectl get pvc
 NAME           STATUS    VOLUME       CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 mongodb-pvc    Bound     mongodb-pv   1Gi        RWO,ROX                       116s
 mongodb-pvc2   Pending                                                         16s
