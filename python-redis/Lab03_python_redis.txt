@@ -28,8 +28,8 @@ Luego crear el Service:
 kubectl apply -f svc-python.yml
 11. Ver los servicios levantados:
 kubectl get services
-12. En la PC cliente ir a un browser e ir a:
-http://localhost
+12. En la PC cliente ir a un browser y poner la IP que aparece como externa en get "svc":
+http://10.108.244.34
 Si no anduvo probar:
 minikube service python-svc
 Se vera en el Browser la app, o sino ver la URL y levantarla en el browser.
