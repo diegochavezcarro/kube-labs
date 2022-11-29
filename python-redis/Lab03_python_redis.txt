@@ -3,9 +3,10 @@ cd C:\diego\cursos\kube-labs\python-redis
 Levantar minikube: 
 minikube start
 
-2. Opcional: En otra terminal dejar levantado el dashboard (se levantara en un browser):
+2. Opcional: En otra terminal o Tab dejar levantado el dashboard (se levantara en un browser):
 minikube dashboard
-3. Opcional: En otra terminal podemos conectarnos al server (a la virtual que contiene tanto al master como a los nodos):
+3. En otra terminal o Tab podemos conectarnos al server (a la virtual que contiene tanto al master como a un
+nodo worker):
 minikube ssh
 4. Crear un deployment para la base redis:
 kubectl apply -f deploy-redis.yml
