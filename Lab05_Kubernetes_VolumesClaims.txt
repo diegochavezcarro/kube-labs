@@ -22,7 +22,7 @@ mongodb-pvc2   Pending                                                         1
 5. Crear un pod que use tal pvc:
 kubectl create -f mongodb-pod-pvc.yaml
 6. Comprobar si los datos del ejercicio anterior estan aun:
-kubectl exec -it mongodb -- mongo
+kubectl exec -it mongodb -- mongosh
 show dbs
 use baseprueba
 show collections;
