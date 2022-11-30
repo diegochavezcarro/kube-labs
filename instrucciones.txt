@@ -1,17 +1,17 @@
 1. Instalacion:
 Como primer paso instalar Docker. Ver instrucciones en el paso 1 de:
 https://github.com/diegochavezcarro/docker-labs/blob/main/Instrucciones.txt
-Segundo, instalar Minikube, el cluster local de Kubernetes, tambien es conveniente utilizarlo 
-desde un Linux o un Linux dentro de una Virtual.
+Segundo, instalar Minikube, el cluster local de Kubernetes, tiene algunas ventajas utilizarlo 
+desde un Linux o un Linux dentro de una Virtual, ayuda con el acceso a los Services de Kubernetes.
 https://minikube.sigs.k8s.io/docs/start/
 Elegir el binary install
 Tercero instalar kubectl:
 https://kubernetes.io/es/docs/tasks/tools/included/install-kubectl-linux/
 Instalar usando la administración nativa de paquetes. Tmb es posible la forma binaria.
 
-El el caso Windows con WSL2 en la terminal de Linux se pueden seguir los mismos pasos. Tener en 
-cuenta que algunos pasos de los ejercicios se tendran que ejecutar de forma diferente (vamos a ver 
-despues el detalle)
+En el caso Windows con WSL2 funcionaran mejor algunos ejercicios que requieran mas uso de recursos. Algunos 
+pasos de los ejercicios se tendran que ejecutar de forma diferente (vamos a ver despues el detalle, 
+principalmente el uso de Services de Kubernetes):
 
 El el caso Windows con Powershell:
 Minikube:
