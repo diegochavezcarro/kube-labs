@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mongodb-pvc2 
+  name: mongodb-pvc 
 spec:
   resources:
     requests:
