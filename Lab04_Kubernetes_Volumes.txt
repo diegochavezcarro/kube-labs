@@ -1,7 +1,7 @@
 1. Crear un volumen y un pod que contenga un MongoDB:
 kubectl apply -f mongodb-pod-hostpath.yaml
 2.Conectarse al pod:
-kubectl exec -it mongodb -- mongo
+kubectl exec -it mongodb -- mongosh
 3. Crear una base e ingresar algo:
 use baseprueba
 db.coleccion.insert({name:'diego'});
@@ -14,7 +14,7 @@ ls /tmp/mongodb/
 7. Volver a crear el pod:
 kubectl apply -f mongodb-pod-hostpath.yaml
 8. Comprobar si los datos estan aun:
-kubectl exec -it mongodb -- mongo
+kubectl exec -it mongodb -- mongosh
 show dbs
 use baseprueba
 show collections;
