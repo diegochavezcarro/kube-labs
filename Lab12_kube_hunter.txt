@@ -74,9 +74,15 @@ curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:2379/version/
 curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:10250/metrics
 curl -k -H "Authorization: Bearer $TOKEN"  https://192.168.49.2:10250/pods
 
+La forma mas correcta para crear un token es:
+
+kubectl create token admin-user --duration 10m
+
+De esa manera podemos configurar la expiracion del mismo.
 
 
+Con respecto al kube-hunter, para tests activos agregarle al comando un --active
 
-Para tests activos agregarle al kube-hunter --active
+
 
 
