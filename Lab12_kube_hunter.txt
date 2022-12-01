@@ -78,7 +78,8 @@ La forma mas correcta para crear un token es:
 
 kubectl create token admin-user --duration 10m
 
-De esa manera podemos configurar la expiracion del mismo.
+De esa manera podemos configurar la expiracion del mismo. Ver
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#manually-create-an-api-token-for-a-serviceaccount
 
 
 Con respecto al kube-hunter, para tests activos agregarle al comando un --active
