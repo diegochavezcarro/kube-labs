@@ -1,1 +1,54 @@
 
+Basado en https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+
+1. Con el minikube levantado habilitar Ingress:
+
+minikube addons enable ingress
+
+2. Ver si se levanto bien:
+
+kubectl get pods -n ingress-nginx
+
+3. Desplegar una aplicacion y exponerla en un Service:
+
+kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
+
+kubectl expose deployment web --type=NodePort --port=8080
+
+4. Desplegar otra aplicacion y su service:
+
+kubectl create deployment web2 --image=gcr.io/google-samples/hello-app:2.0
+
+kubectl expose deployment web2 --port=8080 --type=NodePort
+
+5. Crear un Ingress usando el ejemplo del directorio actual:
+
+kubectl apply -f example-ingress.yaml
+
+6. Esperar hasta que el mismo tenga una direccion creada:
+
+kubectl get ingress
+
+7. Si no estamos usando el virtualizador de Docker utilizar "minikube ip" y seguir. Si usamos Docker esa IP no nos servira de mucho, seguir los siguientes pasos.
+
+8. Crear un tunel:
+
+Aclaracion, el ingress controller sera un NodePort, no un LoadBalancer, asi que tampoco minikube tunnel solucionara nada. Los ingress controllers por lo gral son del tipo LoadBalancer, no asi el de este ejemplo. 
+observar esto:
+
+ kubectl get svc -n ingress-nginx
+ 
+ Entonces, crear el otro tipo de tuneles:
+
+minikube service ingress-nginx-controller -n  ingress-nginx
+
+Elegir la opcion http (la https tambien funcionara, en ese caso agregar https a la url) y pegar en el browser:
+
+http://127.0.0.1:40891
+
+Se vera el servicio llamado web. Si en el browser ponemos:
+
+http://127.0.0.1:40891/vs
+
+Se vera el servicio llamado web2.
+
