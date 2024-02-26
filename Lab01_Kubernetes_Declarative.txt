@@ -59,7 +59,7 @@ Reemplazar esa IP por la que aparece en los comandos descriptivos de más arriba
 (por ej kubectl get pods -o wide).
 
 15. Levantar un servicio para exponer el deployment,usando el archivo descriptivo:
-kubectl app -f svc.yml
+kubectl apply -f svc.yml
 16. Ver los servicios levantados y el detalle:
 kubectl get services
 kubectl get services -o json hello-svc
