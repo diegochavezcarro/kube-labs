@@ -30,7 +30,6 @@ kubectl get services -o wide -n primer-ns
 10. En la terminal conectada al pod del primer namespace probar acceso al Service:
 curl 10.106.139.96:8080
 Se puede ver?
-La sesion de la terminal abierta no lo ve. Salir de la misma y abrir otra terminal (paso 6).
 11. En otra terminal acceder a un pod del segundo namespace:
 kubectl exec -it hello-node-594bf69d8-gfq4h -n segundo-ns -- sh
 12. Acceder al Service del primer namespace (desde el segundo):
